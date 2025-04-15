@@ -1,0 +1,392 @@
+{
+  "data": [
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Annual Visit",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "Well Visit",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Behavioral Health Admission & Treatment",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "BH Visit",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Behavioral Health Pre-Admission",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "BH Pre-Adm",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Booster",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "CovidBster",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Care Planning",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "CCMR",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "consult follow up",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "CON f/u",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Consult new",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "CON new",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Consultation",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "Consult",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Debridement for WC patient",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "Debridment",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Diabetic Patients",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "z F/U DM",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Diabetic Patients",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "z WI DM",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Employment Physical",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "EP",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Established Patient Visit",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "x EST",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Follow up visit",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "zFOL",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Follow Up Visit",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "F/U",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Immigration Physical",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "IM",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Lab Visit",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "LAB",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Migrated",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "Migrated",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "New Patient Visit",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "NP",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Nuclear Stress Test",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "NST",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Nurse Visit",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "NV",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Office Visit",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "zOV",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Online",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "OPENACCESS",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "PAP",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "PAP",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "PCR Test",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "PCR",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Post Hospital ER",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "Post Hospi",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Private",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "PVT",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Regular Telephonic Visit",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "TeleVst R",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Same Day Appointment",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "Same Day R",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Same Day Appointment",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "Same Day U",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "SAME DAY APPOINTMENT",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "zSAME DAY",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Sonogram",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "SONO",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Telephone/ Web",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "Altrn Enc.",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Urgent Care Visit",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "UCV",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Urgent Telephonic Visit",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "TeleVst U",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Vaccination",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "Vacc",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Vaccine Dose 1",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "CovidDose1",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Vaccine Dose 2",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "CovidDose2",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Vaccine Dose 3",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "CovidDose3",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Walk-In Visit",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "WI",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Workers Comp",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "Workers Co",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Wound care Follow up Visit",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "WC Folwup",
+      "id": 0
+    },
+    {
+      "billLater": 1,
+      "charges": "0.00",
+      "visitcodedesc": "Wound care new patient visit",
+      "billtopt": 0,
+      "onlineScheduling": 0,
+      "visitcode": "WC Visit",
+      "id": 0
+    }
+  ],
+  "status": "success"
+}

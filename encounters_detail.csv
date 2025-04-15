@@ -1,0 +1,5 @@
+chart_lock_status,visitType,encounterdate,id,patientId,remarks,sourceencounterid
+Unlock,TEL,2025-04-10,2384883,68261,,0
+Unlock,F/U,2025-04-10,2337946,90567,,68837
+Unlock,F/U,2025-04-10,2384008,127621,"Blood Pressure Control for Patients With Diabetes,Controlling High Blood Pressure,Depression Screening and Follow-Up for Adolescents and Adults,Eye Exam for Patients With Diabetes,Glycemic Status Assessment for Patients With Diabetes,Kidney Health Evaluation for Patients With Diabetes",132157
+Unlock,F/U,2025-04-10,2346481,107636,,68840

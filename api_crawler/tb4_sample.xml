@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+                   xmlns:xsd="http://www.w3.org/1999/XMLSchema"
+                   xmlns:xsi="http://www.w3.org/1999/XMLSchema-instance">
+    <SOAP-ENV:Body>
+        <return>
+            <resultset>
+                <data/>
+            </resultset>
+<!--            totalCount will have a value if the encounter on that day is not deleted-->
+<!--            0 - False-->
+<!--            >=1 - True-->
+            <totalCount>0</totalCount>
+            <noShowCount>0</noShowCount>
+            <canceledCount>0</canceledCount>
+            <rescheduledCount>0</rescheduledCount>
+            <allNonBillableCount>0</allNonBillableCount>
+            <otherNonBillableCount>0</otherNonBillableCount>
+            <status>
+                <errorno>0</errorno>
+                <description>success</description>
+            </status>
+        </return>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/1999/XMLSchema" xmlns:xsi="http://www.w3.org/1999/XMLSchema-instance">
+    <SOAP-ENV:Body>
+        <return>
+            <encounter>
+                <encounterId>2365016</encounterId>
+                <patientId>123008</patientId>
+                <webenabled>1</webenabled>
+                <patientStatus>0</patientStatus>
+                <name>Henderson, Jennifer</name>
+                <time>11:45:00</time>
+                <startTime>11:45:00</startTime>
+                <endTime>11:50:00</endTime>
+                <date>2025-02-25</date>
+                <visitType>Well Visit</visitType>
+                <encLock>0</encLock>
+                <ResourceId>132157</ResourceId>
+                <reason></reason>
+            </encounter>
+            <patient>
+                <accountNumber>123008</accountNumber>
+                <dateOfBirth>08/17/1963</dateOfBirth>
+                <firstName>Jennifer</firstName>
+                <id>123008</id>
+                <lastName>Henderson</lastName>
+                <sex>female</sex>
+            </patient>
+        </return>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

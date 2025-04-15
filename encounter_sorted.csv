@@ -1,0 +1,5 @@
+chart_lock_status,createdate,visitType,visit type name,encounterdate,id,isdeleted,patientId,physicianid,practiceid,Facility name,providerfirstname,providerlastname,remarks,sourceencounterid,unbilled,icd_code_10
+Unlock,2025-04-10,TEL,,2025-04-10,2384883,False,68261,115699,18,125th City Medical Healthcare Associates PLLC,Menaka,Abeyewardene,,0,False,
+Unlock,2025-04-09,F/U,Follow Up Visit,2025-04-10,2337946,False,90567,68837,23,City Prime Health 2 (156 Bx),Vijaykumar,Alla,,68837,False,
+Unlock,2025-04-10,F/U,Follow Up Visit,2025-04-10,2384008,False,127621,132157,42,City Prime Health Ozone Park,IFTIKHAR,CHEEMA,"Blood Pressure Control for Patients With Diabetes,Controlling High Blood Pressure,Depression Screening and Follow-Up for Adolescents and Adults,Eye Exam for Patients With Diabetes,Glycemic Status Assessment for Patients With Diabetes,Kidney Health Evaluation for Patients With Diabetes",132157,False,
+Unlock,2025-01-09,F/U,Follow Up Visit,2025-04-10,2346481,False,107636,68840,21,City Prime Health 4 (3671 Brdy ),marisa,leonardo,,68840,False,
