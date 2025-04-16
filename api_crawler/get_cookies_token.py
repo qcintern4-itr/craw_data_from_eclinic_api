@@ -1,3 +1,4 @@
+import os
 import time
 
 from seleniumwire import webdriver
@@ -19,7 +20,11 @@ def get_token_and_cookies():
         'verify_ssl': False
     }
 
-    service = Service(log_path="NUL")  # "/dev/null" on Linux/Mac
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.abspath(os.path.join(current_dir, ".."))
+    driver_path = os.path.join(project_root, "driver", "chromedriver.exe")
+
+    service = Service(executable_path=driver_path,log_path="NUL")  # "/dev/null" on Linux/Mac
     driver = webdriver.Chrome(service=service, options=chrome_options, seleniumwire_options=seleniumwire_options)
 
     try:
