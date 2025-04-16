@@ -6,19 +6,14 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import os
 import config
 
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
 
 
 def get_token_and_cookies():
     chrome_options = Options()
     chrome_options.add_argument("--headless=new")
-    chrome_options.add_argument('--disable-gpu')
-    chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument("--log-level=3")
-    chrome_options.add_argument("--disable-logging")
 
     seleniumwire_options = {
         'verify_ssl': False

@@ -30,7 +30,7 @@ def get_headers():
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
         "x-csrf-token": token_val,
         "Accept": "application/xml, application/json",
-        # "Accept-Encoding": "identity",
+
     }
 
 def convert_acc_to_patient_id(acc_no_num):
@@ -181,7 +181,7 @@ def set_table_log(encounter_id):
         "timestamp": timestamp,
         "clientTimezone": config.CLIENT_TIMEZONE
     }
-    # create session and send request
+
     response = session.post(url, params=params, headers=get_headers(), cookies=get_cookies())
     # check status code
     if response.status_code == 200:
@@ -236,7 +236,6 @@ def set_table_status_del(patient_id, from_date, to_date):
         "clientTimezone": config.CLIENT_TIMEZONE
     }
 
-    # create session and send request
     response = session.post(url, params=params, cookies=get_cookies(), headers=get_headers())
     # check status code
     if response.status_code == 200:
@@ -271,8 +270,7 @@ def get_table_visit_type():
         "clientTimezone": config.CLIENT_TIMEZONE
     }
 
-    # create session and send request
-    # session = requests.session()
+
     response = session.post(url, data=params, cookies=get_cookies(), headers=get_headers())
 
     if response.status_code == 200:
@@ -316,8 +314,6 @@ def set_table_dx_info(patient_id, encounter_id):
         "sRequestType": "loadQuickSearchData"
     }
 
-    # create session and send request
-    # session = requests.session()
     response = session.post(url, params=params, data=data, cookies=get_cookies(), headers=get_headers())
 
     if response.status_code == 200:
@@ -332,7 +328,7 @@ def set_table_dx_info(patient_id, encounter_id):
 def get_table_dx_info(df_table_1):
     result = []
     for _, row in df_table_1.iterrows():
-        dx_info = set_table_dx_info(row["patientId"], row["id"])  # Trả về list các dxItemCode (string)
+        dx_info = set_table_dx_info(row["patientId"], row["id"])  # return list of dxItemCode
         if dx_info:
             merged_dx_codes = ", ".join(dx_info)
         else:

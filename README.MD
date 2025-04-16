@@ -8,7 +8,6 @@ This project is designed to automate the process of collecting, parsing, and exp
 
 ```
 api_crawler/
-├── config.py               # Contains constant configuration variables
 ├── read_data_csv.py        # Reads the input CSV file
 ├── get_cookies_token.py    # Uses Selenium to extract authentication cookies and token
 ├── data_collector.py       # Calls the API to collect raw data
@@ -19,6 +18,7 @@ output/
 └── encounter.csv           # Final merged data exported as CSV
 
 run.py                      # Main entry point to run the entire pipeline
+config.py                   # Contains constant configuration variables
 ```
 
 ##  🚀 How to Run

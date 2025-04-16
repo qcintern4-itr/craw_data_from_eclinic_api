@@ -118,9 +118,6 @@ def get_patient_id_from_xml(xml_text):
     try:
         # Parse XML
         root = ET.fromstring(xml_text)
-
-        # Tìm đến thẻ <id> (bất kể namespace)
-        # Tìm tất cả thẻ "id" trong toàn bộ XML, và lấy thẻ đầu tiên
         id_element = root.find(".//id")
 
         if id_element is not None:
@@ -128,5 +125,5 @@ def get_patient_id_from_xml(xml_text):
         else:
             return None
     except ET.ParseError as e:
-        print("Lỗi khi parse XML:", e)
+        print("XML parsing error:", e)
         return None
