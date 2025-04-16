@@ -1,43 +1,41 @@
-import time
-
-from data_collector import get_table_2, get_table_1, get_table_3, get_table_4, get_table_5, get_table_6
-from read_data_csv import read_acc_numbers_from_csv
 import os
+from api_crawler.data_collector import *
+from api_crawler.read_data_csv import read_acc_numbers_from_csv
+
+def merge_df_csv(from_date, to_date, csv_file_path):
+    file_path = os.path.abspath(csv_file_path)
+    patient_ids_raw = read_acc_numbers_from_csv(file_path)
+    df_acc_no = pd.DataFrame(patient_ids_raw, columns=["acc_no"])
+
+    patient_ids_converted_acc = get_patient_id(patient_ids_raw)
+    df_encounter = get_table_encounter(patient_ids_converted_acc, from_date, to_date)
+    df_encounter_detail = get_table_encounter_detail(df_encounter)
+    df_log = get_table_log(df_encounter_detail)
+    df_status_del = get_table_status_del(df_encounter_detail, from_date, to_date)
+    df_visit_type = get_table_visit_type()
+    df_dx_info = get_table_dx_info(df_encounter_detail)
+
+    # merge to csv
+    df_merged = pd.concat([df_encounter_detail, df_encounter.drop("encounterID", axis=1), df_log, df_status_del, df_dx_info, df_acc_no], axis=1)
+    if "visitType" in df_merged.columns and "visit type code" in df_visit_type.columns:
+        df_merged = pd.merge(df_merged, df_visit_type, left_on='visitType', right_on='visit type code', how='left')
 
 
+    column_order = [
+        "id","patientId","acc_no","chart_lock_status","createdate","visitType","visit type name",
+        "encounterdate","isdeleted","physicianid","practiceid","Facility name","providerfirstname","providerlastname",
+        "remarks","sourceencounterid","unbilled","icd_code_10"]
 
-file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "patientid_10_4_25.csv"))
-patient_ids = read_acc_numbers_from_csv(file_path)
+    df_sorted = df_merged[column_order]
 
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    parent_dir = os.path.dirname(current_dir)
+    output_dir = os.path.join(parent_dir, "output")
 
-from_date = "4/10/2025"
-to_date = "4/10/2025"
+    # create if not exist
+    os.makedirs(output_dir, exist_ok=True)
 
-
-
-# Table 2 - cần đầu tiên
-table_2 = get_table_2(patient_ids, from_date, to_date)
-table_2.to_csv("encounters_data.csv", index=False)
-
-# Table 1
-table_1 = get_table_1(table_2)
-table_1.to_csv("encounters_detail.csv", index=False)
-
-# Table 3
-table_3 = get_table_3(table_1)
-table_3.to_csv("logs_data.csv", index=False)
-
-# Table 4
-table_4 = get_table_4(table_1, from_date, to_date)
-table_4.to_csv("status_data.csv", index=False)
-
-# Table 5
-
-table_5 = get_table_5()
-table_5.to_csv("visit_data.csv", index=False)
-
-# talbe 6
-table_6 = get_table_6(table_1)
-table_6.to_csv("dx_info.csv", index=False)
+    output_path = os.path.join(output_dir, "encounter.csv")
+    df_sorted.to_csv(output_path, index=False)
 
 

@@ -18,6 +18,7 @@ def parse_encounters(xml_text):
                 "providerfirstname": row.findtext("ufname"),
                 "providerlastname": row.findtext("ulname"),
                 "unbilled": unbilled,
+                "date":row.findtext("date")
             }
             encounters.append(encounter)
     except ET.ParseError as e:
@@ -111,3 +112,21 @@ def extract_dx_info(response_text):
     except json.JSONDecodeError:
         print("Error: JSON invalid.")
         return []
+
+
+def get_patient_id_from_xml(xml_text):
+    try:
+        # Parse XML
+        root = ET.fromstring(xml_text)
+
+        # Tìm đến thẻ <id> (bất kể namespace)
+        # Tìm tất cả thẻ "id" trong toàn bộ XML, và lấy thẻ đầu tiên
+        id_element = root.find(".//id")
+
+        if id_element is not None:
+            return id_element.text
+        else:
+            return None
+    except ET.ParseError as e:
+        print("Lỗi khi parse XML:", e)
+        return None

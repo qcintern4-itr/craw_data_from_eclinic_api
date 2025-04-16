@@ -1,8 +1,8 @@
-from parse_response import *
+from api_crawler.parse_response import *
 import requests
 import pandas as pd
 import json
-from get_cookies_token import get_token_and_cookies
+from api_crawler.get_cookies_token import get_token_and_cookies
 import config
 import time, random
 
@@ -30,12 +30,54 @@ def get_headers():
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
         "x-csrf-token": token_val,
         "Accept": "application/xml, application/json",
+        # "Accept-Encoding": "identity",
     }
 
-
-def get_table_2(patient_list, from_date, to_date):
+def convert_acc_to_patient_id(acc_no_num):
     # URL
-    url = f"{config.base_url}/catalog/xml/getPtEncounters.jsp"
+    url = f"{config.BASE_URL}/catalog/xml/getPatients.jsp"
+
+    # params
+    params = {
+        "sessionDID": config.SESSION_DID,
+        "TrUserId": config.TR_USER_ID,
+        "Device": "webemr",
+        "ecwappprocessid": 0,
+        "rnd2": rnd2,
+        "timestamp": timestamp,
+        "clientTimezone": config.CLIENT_TIMEZONE
+    }
+
+    # Form data
+    patient_obj = {
+        "AccountNo": acc_no_num,
+        "primarySearchValue": acc_no_num,
+        "device": "webemr",
+        "callFromScreen": "PatientSearch",
+        "action": "Patient",
+        "SearchBy": "AccountNo"
+    }
+
+    response = session.post(url, params=params, data=patient_obj, cookies=get_cookies(), headers=get_headers())
+
+    if response.status_code == 200:
+        patient_id = get_patient_id_from_xml(response.text)
+        return patient_id
+
+
+def get_patient_id(patient_ids):
+    for i, pid in enumerate(patient_ids):
+        if not pid.isdigit():
+            converted_id = convert_acc_to_patient_id(pid)
+            if converted_id:
+                patient_ids[i] = converted_id  # update right that position
+    return patient_ids
+
+
+
+def get_table_encounter(patient_list, from_date, to_date):
+    # URL
+    url = f"{config.BASE_URL}/catalog/xml/getPtEncounters.jsp"
 
     # params
     params = {
@@ -60,13 +102,13 @@ def get_table_2(patient_list, from_date, to_date):
         "MAXCOUNT": 50,
         "callingfor": "PATIENT_HUB_ENCOUNTER_LOOKUP",
         "IncludeEncCount": 1,
-        "sessionDID": config.session_did,
-        "TrUserId": config.tr_user_id,
+        "sessionDID": config.SESSION_DID,
+        "TrUserId": config.TR_USER_ID,
         "Device": "webemr",
         "ecwappprocessid": 0,
         "rnd2": rnd2,
         "timestamp": timestamp,
-        "clientTimezone": config.client_timezone
+        "clientTimezone": config.CLIENT_TIMEZONE
     }
 
     # session = requests.Session()
@@ -84,21 +126,23 @@ def get_table_2(patient_list, from_date, to_date):
     return df
 
 
-def set_up_table_1(encounter_id):
+
+
+def set_table_encounter_detail(encounter_id):
     # URL
-    url = f"{config.base_url}/catalog/xml/getValuesForEnctrId.jsp"
+    url = f"{config.BASE_URL}/catalog/xml/getValuesForEnctrId.jsp"
 
     # params
     params = {
         "encounterId": encounter_id,
         "addPtDetails": "true",
-        "sessionDID": config.session_did,
-        "TrUserId": config.tr_user_id,
+        "sessionDID": config.SESSION_DID,
+        "TrUserId": config.TR_USER_ID,
         "Device": "webemr",
         "ecwappprocessid": "0",
         "rnd2": rnd2,
         "timestamp": timestamp,
-        "clientTimezone": config.client_timezone,
+        "clientTimezone": config.CLIENT_TIMEZONE,
         "_": "1744278198672",
         "gd": "e5e084e46d422c4b3ca2fa3aec4b35ee0366eb2f49cd7544046fad06890a47b0"
     }
@@ -115,27 +159,27 @@ def set_up_table_1(encounter_id):
         return None
 
 
-def get_table_1(df_table_2):
+def get_table_encounter_detail(df_table_2):
     result = []
     for _, row in df_table_2.iterrows():
-        data = set_up_table_1(row["encounterID"])
+        data = set_table_encounter_detail(row["encounterID"])
         if data:
             result.append(data)
     return pd.DataFrame(result)
 
 
-def set_up_table_3(encounter_id):
-    url = f"{config.base_url}/catalog/xml/getLogs.jsp"
+def set_table_log(encounter_id):
+    url = f"{config.BASE_URL}/catalog/xml/getLogs.jsp"
 
     params = {
         "EncounterId": encounter_id,
-        "sessionDID": config.session_did,
-        "TrUserId": config.tr_user_id,
+        "sessionDID": config.SESSION_DID,
+        "TrUserId": config.TR_USER_ID,
         "Device": "webemr",
         "ecwappprocessid": "0",
         "rnd2": rnd2,
         "timestamp": timestamp,
-        "clientTimezone": config.client_timezone
+        "clientTimezone": config.CLIENT_TIMEZONE
     }
     # create session and send request
     response = session.post(url, params=params, headers=get_headers(), cookies=get_cookies())
@@ -149,17 +193,17 @@ def set_up_table_3(encounter_id):
         return None
 
 
-def get_table_3(df_table_1):
+def get_table_log(df_table_1):
     result = []
     for _, row in df_table_1.iterrows():
-        log = set_up_table_3(row["id"])
+        log = set_table_log(row["id"])
         if log:
             result.append(log)
     return pd.DataFrame(result)
 
 
-def set_up_table_4(patient_id, from_date, to_date):
-    url = f"{config.base_url}/catalog/xml/getPtEncounters.jsp"
+def set_table_status_del(patient_id, from_date, to_date):
+    url = f"{config.BASE_URL}/catalog/xml/getPtEncounters.jsp"
 
     params = {
         "PatientId": patient_id,
@@ -183,13 +227,13 @@ def set_up_table_4(patient_id, from_date, to_date):
         "MAXCOUNT": "50",
         "callingfor": "PATIENT_HUB_ENCOUNTER_LOOKUP",
         "IncludeEncCount": "1",
-        "sessionDID": config.session_did,
-        "TrUserId": config.tr_user_id,
+        "sessionDID": config.SESSION_DID,
+        "TrUserId": config.TR_USER_ID,
         "Device": "webemr",
         "ecwappprocessid": "0",
         "rnd2": rnd2,
         "timestamp": timestamp,
-        "clientTimezone": config.client_timezone
+        "clientTimezone": config.CLIENT_TIMEZONE
     }
 
     # create session and send request
@@ -204,27 +248,27 @@ def set_up_table_4(patient_id, from_date, to_date):
         return None
 
 
-def get_table_4(df_table_1, from_date, to_date):
+def get_table_status_del(df_table_1, from_date, to_date):
     result = []
     for _, row in df_table_1.iterrows():
-        status = set_up_table_4(row["patientId"], from_date, to_date)
+        status = set_table_status_del(row["patientId"], from_date, to_date)
         if status:
             result.append(status)
     return pd.DataFrame(result)
 
 
-def get_table_5():
-    url = f"{config.base_url}/webemr/menu/schedule/visitTypeCostConfigController.jsp"
+def get_table_visit_type():
+    url = f"{config.BASE_URL}/webemr/menu/schedule/visitTypeCostConfigController.jsp"
 
     params = {
         "Action": "GET_LIST",
-        "sessionDID": config.session_did,
-        "TrUserId": config.tr_user_id,
+        "sessionDID": config.SESSION_DID,
+        "TrUserId": config.TR_USER_ID,
         "Device": "webemr",
         "ecwappprocessid": "0",
         "rnd2": rnd2,
         "timestamp": timestamp,
-        "clientTimezone": config.client_timezone
+        "clientTimezone": config.CLIENT_TIMEZONE
     }
 
     # create session and send request
@@ -242,24 +286,24 @@ def get_table_5():
         return None
 
 
-def set_up_table_6(patient_id, encounter_id):
-    url = f"{config.base_url}/webemr/labs/LabsRequestHandler.jsp"
+def set_table_dx_info(patient_id, encounter_id):
+    url = f"{config.BASE_URL}/webemr/labs/LabsRequestHandler.jsp"
 
     params = {
-        "sessionDID": config.session_did,
-        "TrUserId": config.tr_user_id,
+        "sessionDID": config.SESSION_DID,
+        "TrUserId": config.TR_USER_ID,
         "Device": "webemr",
         "ecwappprocessid": "0",
         "rnd2": rnd2,
         "timestamp": timestamp,
-        "clientTimezone": config.client_timezone
+        "clientTimezone": config.CLIENT_TIMEZONE
     }
 
     quick_search_obj = {
         "sContext": "PNScreen",
         "qsMarginTop": -2,
         "nPatientId": patient_id,
-        "nTrUserId": config.tr_user_id,
+        "nTrUserId": config.TR_USER_ID,
         "nEncounterId": encounter_id,
         "nDxItemId": 0,
         "sActionType": ""
@@ -285,10 +329,10 @@ def set_up_table_6(patient_id, encounter_id):
         return None
 
 
-def get_table_6(df_table_1):
+def get_table_dx_info(df_table_1):
     result = []
     for _, row in df_table_1.iterrows():
-        dx_info = set_up_table_6(row["patientId"], row["id"])  # Trả về list các dxItemCode (string)
+        dx_info = set_table_dx_info(row["patientId"], row["id"])  # Trả về list các dxItemCode (string)
         if dx_info:
             merged_dx_codes = ", ".join(dx_info)
         else:
