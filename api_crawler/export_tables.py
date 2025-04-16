@@ -1,5 +1,5 @@
 import os
-from api_crawler.data_collector import *
+from api_crawler.api_handler import *
 from api_crawler.read_data_csv import read_acc_numbers_from_csv
 
 def merge_df_csv(from_date, to_date, csv_file_path):

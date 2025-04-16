@@ -10,7 +10,7 @@ This project is designed to automate the process of collecting, parsing, and exp
 api_crawler/
 ├── read_data_csv.py        # Reads the input CSV file
 ├── get_cookies_token.py    # Uses Selenium to extract authentication cookies and token
-├── data_collector.py       # Calls the API to collect raw data
+├── api_handler.py       # Calls the API to collect raw data
 ├── parse_response.py       # Parses response text to extract meaningful information
 └── export_table.py         # Merges and processes data into final CSV format
 
